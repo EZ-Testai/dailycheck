@@ -18,14 +18,25 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - uses: android-actions/setup-android@v3
+      - name: Prepara l'SDK Android
+        working-directory: .
+        run: |
+          wget -q https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -O /tmp/cmdtools.zip
+          sudo mkdir -p /usr/local/lib/android/sdk/cmdline-tools/latest
+          sudo unzip -q /tmp/cmdtools.zip -d /tmp/cmdtools
+          sudo cp -r /tmp/cmdtools/cmdline-tools/* /usr/local/lib/android/sdk/cmdline-tools/latest/
+          echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=/usr/local/lib/android/sdk" >> $GITHUB_ENV
+          echo "/usr/local/lib/android/sdk/cmdline-tools/latest/bin" >> $GITHUB_PATH
+
+      - name: Licenze e piattaforme
+        run: |
+          yes | sdkmanager --licenses > /dev/null || true
+          yes | sdkmanager "platforms;android-34" "build-tools;34.0.0" > /dev/null
 
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-
-      - name: Accetta le licenze dell'SDK
-        run: yes | sdkmanager --licenses > /dev/null || true
 
       - name: Compila l'APK
         run: gradle assembleDebug
