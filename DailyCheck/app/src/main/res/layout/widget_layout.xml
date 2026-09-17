@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="＋  @string/widget_add"
+        android:text="＋  Aggiungi attività"
         android:textColor="@color/accent"
         android:textSize="14sp" />
 
