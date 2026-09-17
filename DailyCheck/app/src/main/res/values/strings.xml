@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DailyCheck</string>
+    <string name="widget_desc">Lista giornaliera delle attività</string>
+    <string name="add_hint">Nuova attività</string>
+    <string name="add">Aggiungi</string>
+    <string name="history">Storico giorni passati</string>
+    <string name="back">← Indietro</string>
+    <string name="widget_add">Aggiungi attività</string>
+    <string name="widget_empty">Nessuna attività: tocca ＋ o apri l'app per aggiungerne</string>
+    <string name="history_empty">Nessun giorno ancora registrato. Spunta qualcosa oggi e tornerai qui domani.</string>
+</resources>
